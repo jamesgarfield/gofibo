@@ -29,10 +29,14 @@ func TestGetFibo(t *testing.T) {
 }
 
 func BenchmarkGetFib(b *testing.B) {
-	GetFib(25)
+	for i := 0; i < b.N; i++ {
+		GetFib(15)
+	}
 }
 
 func BenchmarkGetFibWithProcs(b *testing.B) {
 	runtime.GOMAXPROCS(4)
-	GetFib(25)
+	for i := 0; i < b.N; i++ {
+		GetFib(15)
+	}
 }
